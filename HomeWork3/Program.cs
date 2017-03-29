@@ -31,6 +31,8 @@ namespace HomeWork3
 
             Console.WriteLine("Число слов во введенной Вами строке: " + WordCountInString(stringFromUser));
 
+            Console.WriteLine("Перевернутая строка: " + StringReverse(stringFromUser));
+
             Console.Read();
         }
 
@@ -78,6 +80,18 @@ namespace HomeWork3
                 Console.WriteLine(str);
             }
             return words.Length;
+        }
+
+        static string StringReverse(string stringFromUser)
+        {
+            string reverseString = "";
+
+            for (int i = stringFromUser.Length - 1, j = 0; i > -1; i--, j++)
+            {
+                reverseString += stringFromUser[i];
+            }
+
+            return reverseString;
         }
 
     }
