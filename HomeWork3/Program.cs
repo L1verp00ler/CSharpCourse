@@ -29,6 +29,8 @@ namespace HomeWork3
                 Console.WriteLine("Строка не является палиндромом!");
             }
 
+            Console.WriteLine("Число слов во введенной Вами строке: " + WordCountInString(stringFromUser));
+
             Console.Read();
         }
 
@@ -67,5 +69,16 @@ namespace HomeWork3
                 return true;
             }
         }
+
+        static int WordCountInString(string stringFromUser)
+        {
+            string[] words = stringFromUser.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string str in words)
+            {
+                Console.WriteLine(str);
+            }
+            return words.Length;
+        }
+
     }
 }
