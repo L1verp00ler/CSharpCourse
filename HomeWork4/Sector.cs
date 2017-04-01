@@ -1,23 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace HomeWork4
 {
     class Sector : Figure
     {
-        public override string Name => throw new NotImplementedException();
+        public double ArcLength { get; set; }
+        public double Radius { get; set; }
 
-        public override float Perimeter()
+        public override string GetName { get; } = "Сектор";
+
+        public Sector(double arcLength, double radius)
         {
-            throw new NotImplementedException();
+            this.ArcLength = arcLength;
+            this.Radius = radius;
         }
 
-        public override float Area()
+        public override double GetPerimeter()
         {
-            throw new NotImplementedException();
+            return ArcLength + 2 * Radius;
+        }
+
+        public override double GetArea()
+        {
+            return ArcLength * Radius / 2;
         }
     }
 }

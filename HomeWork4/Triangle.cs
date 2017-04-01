@@ -1,23 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HomeWork4
 {
     class Triangle : Figure
     {
-        public override string Name => throw new NotImplementedException();
+        public double Side1 { get; set; }
+        public double Side2 { get; set; }
+        public double Side3 { get; set; }
 
-        public override float Perimeter()
+        public override string GetName { get; } = "Треугольник";
+
+        public Triangle(float side1, float side2, float side3)
         {
-            throw new NotImplementedException();
+            this.Side1 = side1;
+            this.Side2 = side2;
+            this.Side3 = side3;
         }
 
-        public override float Area()
+        public override double GetPerimeter()
         {
-            throw new NotImplementedException();
+            return Side1 + Side2 + Side3;
+        }
+
+        public override double GetArea()
+        {
+            double semiperimeter = this.GetPerimeter() / 2;
+            return Math.Sqrt(semiperimeter * (semiperimeter - Side1) * (semiperimeter - Side2) * (semiperimeter - Side3));
         }
     }
 }
