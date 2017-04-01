@@ -10,6 +10,22 @@ namespace HomeWork4
     {
         static void Main(string[] args)
         {
+            // Нужно добавить проверку на ввод нулевых и отрицательных значений!!!
+            Rectangle rect1 = new Rectangle(5, 9);
+            Console.WriteLine("Фигура - {0}. Ее периметр составляет {1}, а площадь - {2}.", rect1.Name, rect1.Perimeter(), rect1.Area());
+            Rectangle rect2 = new Rectangle(10.5f, 2.0f);
+            Console.WriteLine("Фигура - {0}. Ее периметр составляет {1}, а площадь - {2}.", rect2.Name, rect2.Perimeter(), rect2.Area());
+            Rectangle rect3 = new Rectangle(5.500000000005f, 9.05055055505f);
+            Console.WriteLine("Фигура - {0}. Ее периметр составляет {1}, а площадь - {2}.", rect3.Name, rect3.Perimeter(), rect3.Area());
+            Console.Read();
+        }
+    }
+
+    /*
+    class Program
+    {
+        static void Main(string[] args)
+        {
             Person p1 = new Person("Bill", "Gates");
             p1.Display(); // вызов метода Display из класса Person
 
@@ -55,4 +71,5 @@ namespace HomeWork4
             Console.WriteLine("Место работы : " + Company);
         }
     }
+    */
 }
