@@ -15,20 +15,20 @@ namespace HomeWork4
             Console.WriteLine("Фигура - {0}. Его периметр составляет {1}, а площадь - {2}.", rect3.GetName, rect3.GetPerimeter(), rect3.GetArea());
             Console.WriteLine();
 
-            Triangle triangle1 = new Triangle(3, 4, 5);
-            Console.WriteLine("Фигура - {0}. Его периметр составляет {1}, а площадь - {2}.", triangle1.GetName, triangle1.GetPerimeter(), triangle1.GetArea());
-            Triangle triangle2 = new Triangle(10, 6, 8);
-            Console.WriteLine("Фигура - {0}. Его периметр составляет {1}, а площадь - {2}.", triangle2.GetName, triangle2.GetPerimeter(), triangle2.GetArea());
-            Triangle triangle3 = new Triangle(20, 10, 12);
-            Console.WriteLine("Фигура - {0}. Его периметр составляет {1}, а площадь - {2}.", triangle3.GetName, triangle3.GetPerimeter(), triangle3.GetArea());
-            Console.WriteLine();
-
             Circle circle1 = new Circle(5.5);
             Console.WriteLine("Фигура - {0}. Его периметр составляет {1}, а площадь - {2}.", circle1.GetName, circle1.GetPerimeter(), circle1.GetArea());
             Circle circle2 = new Circle(7.9);
             Console.WriteLine("Фигура - {0}. Его периметр составляет {1}, а площадь - {2}.", circle2.GetName, circle2.GetPerimeter(), circle2.GetArea());
             Circle circle3 = new Circle(30);
             Console.WriteLine("Фигура - {0}. Его периметр составляет {1}, а площадь - {2}.", circle3.GetName, circle3.GetPerimeter(), circle3.GetArea());
+            Console.WriteLine();
+
+            Triangle triangle1 = new Triangle(3, 4, 5);
+            Console.WriteLine("Фигура - {0}. Его периметр составляет {1}, а площадь - {2}.", triangle1.GetName, triangle1.GetPerimeter(), triangle1.GetArea());
+            Triangle triangle2 = new Triangle(10, 6, 8);
+            Console.WriteLine("Фигура - {0}. Его периметр составляет {1}, а площадь - {2}.", triangle2.GetName, triangle2.GetPerimeter(), triangle2.GetArea());
+            Triangle triangle3 = new Triangle(20, 10, 12);
+            Console.WriteLine("Фигура - {0}. Его периметр составляет {1}, а площадь - {2}.", triangle3.GetName, triangle3.GetPerimeter(), triangle3.GetArea());
             Console.WriteLine();
 
             Sector sector1 = new Sector(5, 3);
