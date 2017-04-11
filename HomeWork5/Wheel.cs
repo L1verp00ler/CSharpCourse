@@ -8,12 +8,29 @@ namespace HomeWork5
 {
     class Wheel : Detail, IRotatable
     {
-        public override int Weight { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        private uint _number;
+        private Car _ownerCar;
+
+        public uint Number
+        {
+            get
+            {
+                return _number;
+            }
+        }
+
+        public override int Weight { get; set; }
+        public override string Name { get; set; } = "Колесо";
+
+        public Wheel(uint number, Car ownerCar)
+        {
+            _number = number;
+            _ownerCar = ownerCar;
+        }
 
         public void Move()
         {
-            Console.WriteLine("");
+            Console.WriteLine("Колесо №" + Number + " машины " + _ownerCar.Model + " вращается.");
         }
     }
 }

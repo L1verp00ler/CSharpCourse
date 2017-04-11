@@ -8,12 +8,34 @@ namespace HomeWork5
 {
     class Door : Detail, IDoor
     {
-        public override int Weight { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool isOpenedDoor = false;
+
+        private uint _number;
+        private Car _ownerCar;
+
+        public uint Number
+        {
+            get
+            {
+                return _number;
+            }
+        }
+
+        public override int Weight { get; set; }
+        public override string Name { get; set; } = "Дверь";
+
+        public Door(uint number, Car ownerCar)
+        {
+            _number = number;
+            _ownerCar = ownerCar;
+        }
+
 
         public void Open()
         {
-            Console.WriteLine("");
+            string doorState = this.isOpenedDoor ? "открыта" : "закрыта";
+            Console.WriteLine("Дверь №" + Number + " машины " + doorState);
+            this.isOpenedDoor = !this.isOpenedDoor;
         }
     }
 }
