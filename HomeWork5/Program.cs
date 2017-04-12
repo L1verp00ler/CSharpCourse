@@ -30,11 +30,21 @@ namespace HomeWork5
                 {
                     case "M":
                         Console.WriteLine("Move");
+                        foreach (Detail detail in car.detailsArray)
+                        {
+                            //(detail as IRotatable)?.Move();
+                            if (detail as IRotatable != null)
+                            {
+                                ((IRotatable)detail).Move(); // Не понятно, почему работает именно так
+                                // типа, если он объект класса реализует такой интерфейс(наследуется), то он является таким типом???
+                            }
+                            
+                        }
+                        Console.WriteLine("Move");
                         break;
                     case "O":
                         Console.Write("Введите номер двери или 0 для рамы: ");
                         uint numberOfDoor = UInt32.Parse(Console.ReadLine());
-
                         break;
                     default:
                         Console.WriteLine("Введено неверное действие!");
