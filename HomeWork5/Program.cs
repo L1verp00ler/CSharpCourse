@@ -45,6 +45,16 @@ namespace HomeWork5
                     case "O":
                         Console.Write("Введите номер двери или 0 для рамы: ");
                         uint numberOfDoor = UInt32.Parse(Console.ReadLine());
+                        if (numberOfDoor == 0)
+                        {
+                            foreach (Detail detail in car.detailsArray)
+                            {
+                                if (detail as IDoor != null)
+                                {
+                                    
+                                }
+                            }
+                        }
                         break;
                     default:
                         Console.WriteLine("Введено неверное действие!");
