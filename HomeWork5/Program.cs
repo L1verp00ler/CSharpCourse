@@ -10,7 +10,7 @@ namespace HomeWork5
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Создание автомобиля...");
+            Console.WriteLine(">>>>> Приложение \"Автомобиль\" <<<<<\r\n");
 
             Console.Write("Введите модель автомобиля: ");
             string carModel = Console.ReadLine();
@@ -29,9 +29,9 @@ namespace HomeWork5
                 switch (Console.ReadLine())
                 {
                     case "M":
-                        Console.WriteLine("Move");
                         foreach (Detail detail in car.detailsArray)
                         {
+                            // Можно переписать по-другому (см. ниже)
                             IRotatable detail1 = detail as IRotatable;
                             if (detail1 != null)
                             {
@@ -39,6 +39,7 @@ namespace HomeWork5
                             }
 
                             //(detail as IRotatable)?.Move(); - Это "синтаксический сахар"???
+
                             /*
                             if (detail as IRotatable != null)
                             {
@@ -47,16 +48,17 @@ namespace HomeWork5
                             }
                             */
                         }
-                        Console.WriteLine("Move");
                         break;
                     case "O":
                         Console.Write("Введите номер двери или 0 для рамы: ");
-                        uint numberOfDoor = UInt32.Parse(Console.ReadLine());
+                        uint doorNumber = UInt32.Parse(Console.ReadLine());
+                        bool isDoorExistInCar = false;
 
-                        if (numberOfDoor == 0)
+                        if (doorNumber == 0)
                         {
                             foreach (Detail detail in car.detailsArray)
                             {
+                                // Можно переписать по-другому (см. ниже)
                                 Body detail1 = detail as Body;
                                 if (detail1 != null)
                                 {
@@ -68,16 +70,33 @@ namespace HomeWork5
                         {
                             foreach (Detail detail in car.detailsArray)
                             {
-
-                                //
+                                // Можно переписать по-другому (см. ниже)
+                                /*
                                 Door door = detail as Door;
-                                if (door != null)
+                                if (door != null && door.Number == doorNumber)
                                 {
                                     door.Open();
                                 }
+                                */
+                                //
+                                Door door = detail as Door;
+                                if (door == null)
+                                {
+                                    continue;
+                                }
+                                else
+                                {
+                                    if (door.Number == doorNumber)
+                                    {
+                                        door.Open();
+                                        isDoorExistInCar = true;
+                                        break;
+                                    }
+                                }
+                                
                                 //
 
-                                // Это "синтаксический сахар"??? (было предложено студией)
+                                // Это "синтаксический сахар" для операции "... is ..."??? (было предложено студией)
                                 /*
                                 if (detail is Door door)
                                 {
@@ -85,18 +104,19 @@ namespace HomeWork5
                                 }
                                 */
                             }
+                            if (!isDoorExistInCar)
+                            {
+                                Console.WriteLine("Двери с таким номером не существует!");
+                            }
                         }
                         break;
                     default:
-                        Console.WriteLine("Введено неверное действие!");
+                        Console.WriteLine("Выбрано некорректное действие!");
                         break;
                 }
-                Console.Write("Для повтора введите 'r', для выхода - любой символ : ");
+                Console.Write("\r\nДля повтора введите 'r', для выхода - любой символ: ");
             }
             while (Console.ReadLine() == "r");
-
-            //Console.WriteLine(car.Name);
-            //Console.Read();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace HomeWork5
         public Detail[] detailsArray;
 
         public override int Weight { get; set; }
-        public override string Name { get; set; } = "Машина неизвестной модели";
+        public override string Name { get; set; } = "Машина";
 
         public uint NumberOfWheels { get; set; }
         public uint NumberOfDoors { get; set; }
@@ -33,8 +33,6 @@ namespace HomeWork5
                 detailsArray[i - 1] = new Wheel(i, this); // Почему сюда передаем ссылку на объект? ведь он еще не создан, или создан???
             }
 
-            Console.WriteLine(detailsArray.GetType());
-
             // Добавляем в массив двери
             for (uint i = 1, j = numberOfWheels; i <= numberOfDoors; i++)
             {
@@ -44,11 +42,6 @@ namespace HomeWork5
             // Добавляем в массив раму
             detailsArray[detailsArray.Length - 1] = new Body(this);
             
-            for (int i = 0; i < detailsArray.Length; i++)
-            {
-                Console.WriteLine(detailsArray[i]);
-            }
-
             this.detailsArray = detailsArray;
 
             /*
@@ -56,19 +49,6 @@ namespace HomeWork5
             {
                 Console.WriteLine(detail.GetType());
 
-                /*
-                var perem1 = detail as IRotatable;
-                Console.WriteLine(perem1);
-                if (perem1 != null)
-                {
-                    Console.WriteLine(perem1.GetType());
-                }
-                else
-                {
-                    Console.WriteLine("Объекта не существует!");
-                }
-                
-                //
                 if (detail is IRotatable)
                 {
                     //detail.Move();
@@ -76,7 +56,6 @@ namespace HomeWork5
                     //Console.WriteLine(detail.Name + detail.Number); // Почему такое не работает???
                     //Console.WriteLine((Wheel)detail.);
                 }
-                //
             }
             */
         }

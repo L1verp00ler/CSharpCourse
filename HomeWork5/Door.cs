@@ -34,7 +34,7 @@ namespace HomeWork5
         public void Open()
         {
             string doorState = this.isOpenedDoor ? "открыта" : "закрыта";
-            Console.WriteLine("Дверь №" + Number + " машины " + _ownerCar.Model + " " + doorState);
+            Console.WriteLine("Дверь №" + Number + " машины " + _ownerCar.Model + " " + doorState + ".");
             this.isOpenedDoor = !this.isOpenedDoor;
         }
     }
