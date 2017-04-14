@@ -52,7 +52,6 @@ namespace HomeWork5
                     case "O":
                         Console.Write("Введите номер двери или 0 для рамы: ");
                         uint doorNumber = UInt32.Parse(Console.ReadLine());
-                        bool isDoorExistInCar = false;
 
                         if (doorNumber == 0)
                         {
@@ -68,32 +67,19 @@ namespace HomeWork5
                         }
                         else
                         {
+                            bool isDoorExistInCar = false;
+
                             foreach (Detail detail in car.detailsArray)
                             {
                                 // Можно переписать по-другому (см. ниже)
-                                /*
+                                //
                                 Door door = detail as Door;
                                 if (door != null && door.Number == doorNumber)
                                 {
                                     door.Open();
+                                    isDoorExistInCar = true;
+                                    break;
                                 }
-                                */
-                                //
-                                Door door = detail as Door;
-                                if (door == null)
-                                {
-                                    continue;
-                                }
-                                else
-                                {
-                                    if (door.Number == doorNumber)
-                                    {
-                                        door.Open();
-                                        isDoorExistInCar = true;
-                                        break;
-                                    }
-                                }
-                                
                                 //
 
                                 // Это "синтаксический сахар" для операции "... is ..."??? (было предложено студией)
@@ -104,6 +90,7 @@ namespace HomeWork5
                                 }
                                 */
                             }
+
                             if (!isDoorExistInCar)
                             {
                                 Console.WriteLine("Двери с таким номером не существует!");
