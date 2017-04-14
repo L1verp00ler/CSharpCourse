@@ -32,27 +32,58 @@ namespace HomeWork5
                         Console.WriteLine("Move");
                         foreach (Detail detail in car.detailsArray)
                         {
-                            //(detail as IRotatable)?.Move();
+                            IRotatable detail1 = detail as IRotatable;
+                            if (detail1 != null)
+                            {
+                                detail1.Move();
+                            }
+
+                            //(detail as IRotatable)?.Move(); - Это "синтаксический сахар"???
+                            /*
                             if (detail as IRotatable != null)
                             {
                                 ((IRotatable)detail).Move(); // Не понятно, почему работает именно так
                                 // типа, если он объект класса реализует такой интерфейс(наследуется), то он является таким типом???
                             }
-                            
+                            */
                         }
                         Console.WriteLine("Move");
                         break;
                     case "O":
                         Console.Write("Введите номер двери или 0 для рамы: ");
                         uint numberOfDoor = UInt32.Parse(Console.ReadLine());
+
                         if (numberOfDoor == 0)
                         {
                             foreach (Detail detail in car.detailsArray)
                             {
-                                if (detail as IDoor != null)
+                                Body detail1 = detail as Body;
+                                if (detail1 != null)
                                 {
-                                    
+                                    detail1.Open();
                                 }
+                            }
+                        }
+                        else
+                        {
+                            foreach (Detail detail in car.detailsArray)
+                            {
+
+                                //
+                                Door door = detail as Door;
+                                if (door != null)
+                                {
+                                    door.Open();
+                                }
+                                //
+
+                                // Это "синтаксический сахар"??? (было предложено студией)
+                                /*
+                                if (detail is Door door)
+                                {
+                                    door.Open();
+                                }
+                                */
                             }
                         }
                         break;
