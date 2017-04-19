@@ -10,7 +10,9 @@ namespace Homework7
     {
         static void Main(string[] args)
         {
-            //
+            List<Employee> empList = new List<Employee> { };
+            Console.WriteLine(empList);
+            Console.Read();
         }
     }
 }
