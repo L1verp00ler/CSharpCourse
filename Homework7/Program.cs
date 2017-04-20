@@ -41,18 +41,7 @@ namespace Homework7
                                 bank.FindEmployeeByFIO(employeeFIO);
                                 break;
                             case "L":
-                                if (bank.employeesList.Count == 0) // if (bank.employeesList == null)
-                                {
-                                    Console.WriteLine("Ни одного сотрудника не найдено!");
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Список наших сотрудников:");
-                                    foreach (Employee employee in bank.employeesList)
-                                    {
-                                        Console.WriteLine(employee.personnelNumber + " " + employee.FIO + " " + employee.isBusy);
-                                    }
-                                }
+                                bank.GetAndPrintAllEmployees();
                                 break;
                         }
                         break;

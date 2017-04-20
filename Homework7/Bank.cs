@@ -48,6 +48,23 @@ namespace Homework7
             }
         }
 
+        // Вывод списка сотрудников
+        public void GetAndPrintAllEmployees()
+        {
+            if (this.employeesList.Count == 0) // if (bank.employeesList == null)
+            {
+                Console.WriteLine("Ни одного сотрудника не найдено!");
+            }
+            else
+            {
+                Console.WriteLine("Список наших сотрудников:");
+                foreach (Employee employee in this.employeesList)
+                {
+                    Console.WriteLine(employee.personnelNumber + " " + employee.FIO + " " + employee.isBusy);
+                }
+            }
+        }
+
         // Найти свободного сотрудника, соответствующего запросу клиента
         public Employee findFreeEmployeeOnRequest()
         {
