@@ -10,6 +10,13 @@ namespace Homework7
     {
         public abstract string FIO { get; set; }
 
+        /*
+        public Person()
+        {
+
+        }
+        */
+
         public Person(string FIO)
         {
             this.FIO = FIO;

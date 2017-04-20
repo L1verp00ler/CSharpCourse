@@ -12,6 +12,13 @@ namespace Homework7
         public uint personnelNumber;
         public bool isBusy = false;
 
+        /*
+        public Employee()
+        {
+
+        }
+        */
+
         public Employee(string FIO, uint personnelNumber)
             : base(FIO)
         {

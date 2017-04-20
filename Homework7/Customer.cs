@@ -10,6 +10,13 @@ namespace Homework7
     {
         public override string FIO { get; set; }
 
+        /*
+        public Customer()
+        {
+
+        }
+        */
+
         public Customer(string FIO) : base(FIO)
         {
             //
