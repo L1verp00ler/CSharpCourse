@@ -9,7 +9,8 @@ namespace Homework7
     class Employee : Person
     {
         public override string FIO { get ; set; }
-        public uint personnelNumber;
+        public uint PersonnelNumber { get; private set; }
+        public string AccessLevel { get; set; }
         public bool isBusy = false;
 
         /*
@@ -19,11 +20,12 @@ namespace Homework7
         }
         */
 
-        public Employee(string FIO, uint personnelNumber)
+        public Employee(string FIO, uint personnelNumber, string accessLevel)
             : base(FIO)
         {
             this.FIO = FIO;
-            this.personnelNumber = personnelNumber;
+            this.PersonnelNumber = personnelNumber;
+            this.AccessLevel = accessLevel;
         }
 
         public void ServiceCustomer()
