@@ -68,7 +68,7 @@ namespace Homework7
         // Найти свободного сотрудника, соответствующего запросу клиента
         public Employee FindFreeEmployeeOnRequest()
         {
-            Employee emp = new Employee("fbshf", 123, "standart");
+            Employee emp = new Employee("fbshf", 123, Operation.OpenAccount);
             return emp;
         }
 
@@ -110,7 +110,7 @@ namespace Homework7
             }
         }
 
-        // Вывод списка сотрудников
+        // Вывод списка клиентов
         public void GetAndPrintAllCustomers()
         {
             if (this.customersList.Count == 0) // if (bank.employeesList == null)

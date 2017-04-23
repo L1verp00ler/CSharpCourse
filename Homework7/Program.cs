@@ -10,6 +10,8 @@ namespace Homework7
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(Operation.OpenAccount);
+
             Bank bank = new Bank("НаеБанк");
             Console.WriteLine(">>>>>>>>> Добро пожаловать в " + bank.Name + "! <<<<<<<<<");
 
@@ -28,8 +30,28 @@ namespace Homework7
                                 
                                 Console.Write("ФИО: ");
                                 string FIO = Console.ReadLine();
-                                Console.Write("Уровень доступа (standart - открытие/закрытие счетов, high - standart + внесение/снятие денег на счет): ");
-                                string accessLevel = Console.ReadLine();
+                                Console.Write("Уровень доступа (s(s+) - открытие(закрытие) счета, h(h+) - внесение(снятие) денег на(со) счет(а)): ");
+                                string accessLevelAsString = Console.ReadLine();
+
+                                Operation accessLevel;
+                                switch (accessLevelAsString)
+                                {
+                                    case "s":
+                                        accessLevel = Operation.OpenAccount;
+                                        break;
+                                    case "s+":
+                                        accessLevel = Operation.OpenAccount;
+                                        break;
+                                    case "h":
+                                        accessLevel = Operation.OpenAccount;
+                                        break;
+                                    case "h+":
+                                        accessLevel = Operation.OpenAccount;
+                                        break;
+                                    default:
+                                        accessLevel = Operation.OpenAccount;
+                                        break;
+                                }
 
                                 uint personnelNumber = (uint)bank.employeesList.Count; //uint personnelNumber = bank.employeesList == null ? 0 : (uint)bank.employeesList.Count; // ??
                                 Employee newEmployee = new Employee(FIO, personnelNumber, accessLevel);
@@ -43,7 +65,7 @@ namespace Homework7
                                 bank.FindEmployeeByFIO(employeeFIO);
                                 break;
                             case "L":
-                                bank.GetAndPrintAllEmployees();
+                                bank.GetAndPrintAllEmployees(); // Get подразумевает возврат чего-то - ПОПРАВИТЬ!!!
                                 break;
                             default:
                                 Console.WriteLine("Выбрано некорректное действие!");
