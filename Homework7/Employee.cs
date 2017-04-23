@@ -10,7 +10,7 @@ namespace Homework7
     {
         public override string FIO { get; set; }
         public uint PersonnelNumber { get; private set; }
-        public Operation AccessLevel { get; set; }
+        public OperationType AccessLevel { get; set; }
         //public string AccessLevel { get; set; }
         public bool isBusy = false;
 
@@ -21,7 +21,7 @@ namespace Homework7
         }
         */
 
-        public Employee(string FIO, uint personnelNumber, Operation accessLevel)
+        public Employee(string FIO, uint personnelNumber, OperationType accessLevel)
             : base(FIO)
         {
             this.FIO = FIO;

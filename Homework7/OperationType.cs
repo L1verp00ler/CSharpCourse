@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Homework7
 {
-    enum Operation
+    enum OperationType
     {
         OpenAccount = 1,
         CloseAccount,

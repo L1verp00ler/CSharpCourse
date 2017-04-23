@@ -66,7 +66,7 @@ namespace Homework7
         }
 
         // Найти свободного сотрудника, соответствующего запросу клиента
-        public Employee FindFreeEmployeeOnRequest(Operation operationType)
+        public Employee FindFreeEmployeeOnRequest(OperationType operationType)
         {
             Employee employeeOnRequest = null;
 

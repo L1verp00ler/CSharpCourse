@@ -10,7 +10,7 @@ namespace Homework7
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Operation.OpenAccount);
+            Console.WriteLine(OperationType.OpenAccount);
 
             Bank bank = new Bank("НаеБанк");
             Console.WriteLine(">>>>>>>>> Добро пожаловать в " + bank.Name + "! <<<<<<<<<");
@@ -33,23 +33,23 @@ namespace Homework7
                                 Console.Write("Уровень доступа (O(C) - открытие(закрытие) счета, P(W) - внесение(снятие) денег на(со) счет(а)): ");
                                 string accessLevelAsString = Console.ReadLine();
 
-                                Operation accessLevel;
+                                OperationType accessLevel;
                                 switch (accessLevelAsString)
                                 {
                                     case "O":
-                                        accessLevel = Operation.OpenAccount;
+                                        accessLevel = OperationType.OpenAccount;
                                         break;
                                     case "C":
-                                        accessLevel = Operation.CloseAccount;
+                                        accessLevel = OperationType.CloseAccount;
                                         break;
                                     case "P":
-                                        accessLevel = Operation.PutMoney;
+                                        accessLevel = OperationType.PutMoney;
                                         break;
                                     case "W":
-                                        accessLevel = Operation.WithdrawMoney;
+                                        accessLevel = OperationType.WithdrawMoney;
                                         break;
                                     default:
-                                        accessLevel = Operation.OpenAccount;
+                                        accessLevel = OperationType.OpenAccount;
                                         break;
                                 }
 
@@ -81,23 +81,23 @@ namespace Homework7
                                 Console.Write("Выберите действие: O - открыть счет, C - закрыть счет, P - положить денеги на счет, W - снять деньги со счета: ");
                                 string operationTypeAsString = Console.ReadLine();
 
-                                Operation operationType;
+                                OperationType operationType;
                                 switch (operationTypeAsString)
                                 {
                                     case "O":
-                                        operationType = Operation.OpenAccount;
+                                        operationType = OperationType.OpenAccount;
                                         break;
                                     case "C":
-                                        operationType = Operation.CloseAccount;
+                                        operationType = OperationType.CloseAccount;
                                         break;
                                     case "P":
-                                        operationType = Operation.PutMoney;
+                                        operationType = OperationType.PutMoney;
                                         break;
                                     case "W":
-                                        operationType = Operation.WithdrawMoney;
+                                        operationType = OperationType.WithdrawMoney;
                                         break;
                                     default:
-                                        operationType = Operation.OpenAccount;
+                                        operationType = OperationType.OpenAccount;
                                         break;
                                 }
 
