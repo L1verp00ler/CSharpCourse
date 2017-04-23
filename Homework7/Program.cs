@@ -11,6 +11,8 @@ namespace Homework7
         static void Main(string[] args)
         {
             Console.WriteLine(OperationType.OpenAccount);
+            Operation op1 = new Operation();
+            op1.Execute(OperationType.OpenAccount);
 
             Bank bank = new Bank("НаеБанк");
             Console.WriteLine(">>>>>>>>> Добро пожаловать в " + bank.Name + "! <<<<<<<<<");
