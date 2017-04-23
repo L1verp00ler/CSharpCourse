@@ -66,10 +66,20 @@ namespace Homework7
         }
 
         // Найти свободного сотрудника, соответствующего запросу клиента
-        public Employee FindFreeEmployeeOnRequest()
+        public Employee FindFreeEmployeeOnRequest(Operation operationType)
         {
-            Employee emp = new Employee("fbshf", 123, Operation.OpenAccount);
-            return emp;
+            Employee employeeOnRequest = null;
+
+            foreach (Employee employee in this.employeesList)
+            {
+                if (employee.AccessLevel == operationType)
+                {
+                    employeeOnRequest = employee;
+                }
+            }
+            
+            //Employee emp = new Employee("fbshf", 123, Operation.OpenAccount);
+            return employeeOnRequest;
         }
 
         // Обслужить клиента

@@ -30,23 +30,23 @@ namespace Homework7
                                 
                                 Console.Write("ФИО: ");
                                 string FIO = Console.ReadLine();
-                                Console.Write("Уровень доступа (s(s+) - открытие(закрытие) счета, h(h+) - внесение(снятие) денег на(со) счет(а)): ");
+                                Console.Write("Уровень доступа (O(C) - открытие(закрытие) счета, P(W) - внесение(снятие) денег на(со) счет(а)): ");
                                 string accessLevelAsString = Console.ReadLine();
 
                                 Operation accessLevel;
                                 switch (accessLevelAsString)
                                 {
-                                    case "s":
+                                    case "O":
                                         accessLevel = Operation.OpenAccount;
                                         break;
-                                    case "s+":
-                                        accessLevel = Operation.OpenAccount;
+                                    case "C":
+                                        accessLevel = Operation.CloseAccount;
                                         break;
-                                    case "h":
-                                        accessLevel = Operation.OpenAccount;
+                                    case "P":
+                                        accessLevel = Operation.PutMoney;
                                         break;
-                                    case "h+":
-                                        accessLevel = Operation.OpenAccount;
+                                    case "W":
+                                        accessLevel = Operation.WithdrawMoney;
                                         break;
                                     default:
                                         accessLevel = Operation.OpenAccount;
@@ -78,6 +78,29 @@ namespace Homework7
                         switch (Console.ReadLine())
                         {
                             case "S":
+                                Console.Write("Выберите действие: O - открыть счет, C - закрыть счет, P - положить денеги на счет, W - снять деньги со счета: ");
+                                string operationTypeAsString = Console.ReadLine();
+
+                                Operation operationType;
+                                switch (operationTypeAsString)
+                                {
+                                    case "O":
+                                        operationType = Operation.OpenAccount;
+                                        break;
+                                    case "C":
+                                        operationType = Operation.CloseAccount;
+                                        break;
+                                    case "P":
+                                        operationType = Operation.PutMoney;
+                                        break;
+                                    case "W":
+                                        operationType = Operation.WithdrawMoney;
+                                        break;
+                                    default:
+                                        operationType = Operation.OpenAccount;
+                                        break;
+                                }
+
                                 Console.WriteLine("\nПожалуйста, введите данные клиента!");
 
                                 Console.Write("ФИО: ");
@@ -87,6 +110,15 @@ namespace Homework7
                                 Customer newCustomer = new Customer(FIO, customerID);
 
                                 bank.AddCustomer(newCustomer);
+
+                                Employee employeeOnRequest = bank.FindFreeEmployeeOnRequest(operationType);
+                                if (employeeOnRequest == null)
+                                {
+                                    Console.WriteLine("Сотрудника по Вашему запросу не найдено!");
+                                    break;
+                                }
+                                Console.WriteLine("Сотрудник " + employeeOnRequest.FIO + " готов выполнить Ваш запрос!");
+                                // TODO: здесь сотрудник должен инициировать операцию
                                 break;
                             case "F":
                                 Console.Write("Введите ФИО клиента: ");
