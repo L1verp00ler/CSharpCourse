@@ -8,8 +8,67 @@ namespace HomeWork9
 {
     class Program
     {
+        static int OptionalParam(int x, int y, int z = 5, int s = 4)
+        {
+            return x + y + z + s;
+        }
+
         static void Main(string[] args)
         {
+            string inputString = Console.ReadLine();
+            //string inputString = "HelloWorld";
+            char symbol = 'W';
+            //decimal number = Decimal.TryParse(Console.ReadLine());
+            Console.WriteLine(Decimal.TryParse(inputString, out Decimal result)); // рабочая штуковина!!!
+            int positionNumber = inputString.IndexOf(symbol);
+            Console.WriteLine(inputString.All(Char.IsNumber));
+            Console.WriteLine(positionNumber);
+            Console.Read();
+
+            /*
+            Console.WriteLine("Нажмите клавишу 'Esc'!");
+
+            int codeKey = Console.Read();
+            char myChar = (char)codeKey;
+
+            Console.WriteLine(codeKey);
+            Console.WriteLine(myChar);
+            Console.WriteLine(" ");
+
+            Console.Read();
+
+            Console.ReadLine();
+            */
+
+            /*
+            if (Console.ReadKey().Key == ConsoleKey.Escape)
+            {
+                Console.WriteLine("Вы нажали клавишу 'Esc'");
+            }
+            else
+            {
+                Console.WriteLine("Вы нажали какую-то другую клавишу!");
+            }
+
+            Console.Read();
+            */
+
+            /*
+            Console.WriteLine(OptionalParam(x: 2, y: 3));
+
+            //Необязательный параметр z использует значение по умолчанию
+            Console.WriteLine(OptionalParam(y: 2, x: 3, s: 10));
+
+            Console.ReadLine();
+            */
+
+            /*
+            Console.WriteLine("Введите выражение:");
+            int number = Int32.Parse(Console.ReadLine()); // бросает исключение, если строка содержит что-то кроме цифр!
+            Console.ReadLine();
+            */
+
+            /*
             List<double> numbersList = new List<double>();
             List<char> operaionsList = new List<char>();
             string numberAsString = "";
@@ -37,6 +96,7 @@ namespace HomeWork9
 
             Console.WriteLine(expression);
             Console.Read();
+            */
 
             /*
             // Пример алгоритма сложности O(n^2)
