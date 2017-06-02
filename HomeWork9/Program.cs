@@ -47,10 +47,14 @@ namespace HomeWork9
             Operation operation;
             double result = default(Double);
             int position;
-            int positionPlus = expression.IndexOf('+');
-            int positionMinus = expression.IndexOf('-');
-            int positionMultiply = expression.IndexOf('*');
-            int positionDivide = expression.IndexOf('/');
+            //int positionPlus = expression.IndexOf('+');
+            //int positionMinus = expression.IndexOf('-');
+            //int positionMultiply = expression.IndexOf('*');
+            //int positionDivide = expression.IndexOf('/');
+            int positionPlus = expression.LastIndexOf('+');
+            int positionMinus = expression.LastIndexOf('-');
+            int positionMultiply = expression.LastIndexOf('*');
+            int positionDivide = expression.LastIndexOf('/');
 
             Console.WriteLine(positionPlus);
             Console.WriteLine(positionMinus);
@@ -138,7 +142,9 @@ namespace HomeWork9
         {
             Console.WriteLine("Введите выражение: ");
             //string inputString = Console.ReadLine();
-            string inputString = "7,1+3*5/10-7*2/4+5";
+            string inputString = "7,55*10+3*5/10-7*2/4+5-1,5*5/2+1,25-0,1*5-6,5";
+            //Console.WriteLine(inputString.Length);
+            //Console.WriteLine(inputString[44]);
             Console.WriteLine(ParseExpression(inputString));
 
             /*
@@ -240,6 +246,9 @@ namespace HomeWork9
             Console.WriteLine(expression);
             Console.Read();
             */
+
+
+
 
             /*
             // Пример алгоритма сложности O(n^2)
