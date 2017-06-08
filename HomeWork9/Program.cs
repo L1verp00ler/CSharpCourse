@@ -56,10 +56,14 @@ namespace HomeWork9
             int positionMultiply = expression.LastIndexOf('*');
             int positionDivide = expression.LastIndexOf('/');
 
+            Console.WriteLine("Позиции операций в выражении:");
+
             Console.WriteLine(positionPlus);
             Console.WriteLine(positionMinus);
             Console.WriteLine(positionMultiply);
             Console.WriteLine(positionDivide);
+
+            Console.WriteLine("-----");
 
             //Console.WriteLine(positionPlus + ' ' + positionMinus + ' ' + positionMultiply + ' ' + positionDivide);
 
@@ -93,13 +97,23 @@ namespace HomeWork9
 
             string oper1 = expression.Remove(position);
             string oper2 = expression.Remove(0, position + 1);
+
+            Console.WriteLine("Операнды, на которые разбито выражение:");
+
             Console.WriteLine(oper1);
             Console.WriteLine(oper2);
+
+            Console.WriteLine("-----");
+
+            Console.WriteLine("Результаты преобразования операндов в число типа double:");
 
             Double.TryParse(oper1, out double operand1);
             Console.WriteLine(operand1);
             Double.TryParse(oper2, out double operand2);
             Console.WriteLine(operand2);
+
+            Console.WriteLine("-----");
+            Console.WriteLine("");
 
             if (operand1 == 0)
             {
@@ -140,12 +154,28 @@ namespace HomeWork9
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите выражение: ");
-            //string inputString = Console.ReadLine();
-            string inputString = "7,55*10+3*5/10-7*2/4+5-1,5*5/2+1,25-0,1*5-6,5";
+            Console.WriteLine("----->Программа для парсинга арифметических выражений.<-----");
+            Console.WriteLine("Выражение может содержать числа с плавающей точкой, а также операции +, -, *, /");
+            Console.WriteLine("");
+            Console.WriteLine("Введите выражение:");
+            string inputString = Console.ReadLine();
+            Console.WriteLine("");
+            //string inputString = "-0,5--10,5"; // правильный результат: -13
+            //string inputString = "-0,5-10,5-1,0*3+1"; // правильный результат: -13
+            //string inputString = "7,55*10+3*5/10-7*2/4+5-1,5*5/2+1,25-0,1*5-6,5"; // правильный результат: 69
             //Console.WriteLine(inputString.Length);
             //Console.WriteLine(inputString[44]);
-            Console.WriteLine(ParseExpression(inputString));
+
+            try
+            {
+                Console.WriteLine("Результат вычисления выражения: " + ParseExpression(inputString));
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("В выражении обнаружена ошибка, вычисление невозможно!");
+            }
+
+            Console.Read();
 
             /*
             //double result = 
