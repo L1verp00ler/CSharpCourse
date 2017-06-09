@@ -6,6 +6,77 @@ using System.Threading.Tasks;
 
 namespace HomeWork9
 {
+    class MathParser
+    {
+        public static double Example(char[] exp)
+        {
+            return ParseSummands(exp, 0);
+        }
+
+        public static double ParseSummands(char[] exp, int index)
+        {
+            double x = ParseFactors(exp, ref index);
+            while (true)
+            {
+                char operators = exp[index];
+                if (operators != '+' && operators != '-')
+                {
+                    return x;
+                }
+                index++;
+                double y = ParseFactors(exp, ref index);
+                if (operators == '+')
+                {
+                    x += y;
+                }
+                else
+                {
+                    x -= y;
+                }
+            }
+        }
+
+        public static double ParseFactors(char[] exp, ref int index)
+        {
+            double x = GetDouble(exp, ref index);
+            while (true)
+            {
+                char operators = exp[index];
+                if (operators != '/' && operators != '*')
+                {
+                    return x;
+                }
+                index++;
+                double y = GetDouble(exp, ref index);
+                if (operators == '/' && y != 0)
+                {
+                    x /= y;
+                }
+                else if (operators == '*')
+                {
+                    x *= y;
+                }
+            }
+        }
+
+        public static double GetDouble(char[] exp, ref int index)
+        {
+            string str = "";
+            while ((exp[index] >= 48 && exp[index] <= 57) || exp[index] == 46)
+            {
+                str += exp[index].ToString();
+                index++;
+                if (index == exp.Length)
+                {
+                    index--;
+                    break;
+                }
+            }
+
+            return double.Parse(str); // Выдаст исключение при попытке преобразовать строку, содержащую число с точкой, (Н.: 50.5) в тип числа с плавающей запятой!!!
+        }
+    }
+
     class Program
     {
         enum Operation
@@ -154,6 +225,29 @@ namespace HomeWork9
 
         static void Main(string[] args)
         {
+            Console.Write("Введите пример : ");
+            //string example = Console.ReadLine();
+            //string example = "7,55*10+3*5/10-7*2/4+5-1,5*5/2+1,25-0,1*5-6,5"; // правильный результат: 69
+            //string example = "50*2-75+15/3"; // правильный результат: 30
+            string example = "50,5*2-0,5+15/3+1,5"; // правильный результат: 107
+            Console.Write("Ответ : ");
+            Console.Write(MathParser.Example(example.ToCharArray()));
+            //Console.Write(MathParser.Example(example.ToCharArray()).ToString());
+
+            ///
+            //string str = "50,5";
+            //double chislo = Double.Parse(str);
+            //Console.WriteLine(chislo);
+            //double a = 50.5;
+            //Console.WriteLine(a.ToString());
+            ///
+            
+            //QuadraticAlgorithmExecutionTime q = new QuadraticAlgorithmExecutionTime();
+            //q.LeadTime(2, 2);
+
+            Console.Read();
+
+            /*
             Console.WriteLine("----->Программа для парсинга арифметических выражений.<-----");
             Console.WriteLine("Выражение может содержать числа с плавающей точкой, а также операции +, -, *, /");
             Console.WriteLine("");
@@ -176,6 +270,7 @@ namespace HomeWork9
             }
 
             Console.Read();
+            */
 
             /*
             //double result = 
