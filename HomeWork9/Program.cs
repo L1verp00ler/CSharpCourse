@@ -6,6 +6,77 @@ using System.Threading.Tasks;
 
 namespace HomeWork9
 {
+    class MathParser
+    {
+        public static double Example(char[] exp)
+        {
+            return ParseSummands(exp, 0);
+        }
+
+        public static double ParseSummands(char[] exp, int index)
+        {
+            double x = ParseFactors(exp, ref index);
+            while (true)
+            {
+                char operators = exp[index];
+                if (operators != '+' && operators != '-')
+                {
+                    return x;
+                }
+                index++;
+                double y = ParseFactors(exp, ref index);
+                if (operators == '+')
+                {
+                    x += y;
+                }
+                else
+                {
+                    x -= y;
+                }
+            }
+        }
+
+        public static double ParseFactors(char[] exp, ref int index)
+        {
+            double x = GetDouble(exp, ref index);
+            while (true)
+            {
+                char operators = exp[index];
+                if (operators != '/' && operators != '*')
+                {
+                    return x;
+                }
+                index++;
+                double y = GetDouble(exp, ref index);
+                if (operators == '/' && y != 0)
+                {
+                    x /= y;
+                }
+                else if (operators == '*')
+                {
+                    x *= y;
+                }
+            }
+        }
+
+        public static double GetDouble(char[] exp, ref int index)
+        {
+            string str = "";
+            while ((exp[index] >= 48 && exp[index] <= 57) || exp[index] == 46)
+            {
+                str += exp[index].ToString();
+                index++;
+                if (index == exp.Length)
+                {
+                    index--;
+                    break;
+                }
+            }
+
+            return double.Parse(str); // Выдаст исключение при попытке преобразовать строку, содержащую число с точкой, (Н.: 50.5) в тип числа с плавающей запятой!!!
+        }
+    }
+
     class Program
     {
         enum Operation
@@ -47,15 +118,23 @@ namespace HomeWork9
             Operation operation;
             double result = default(Double);
             int position;
-            int positionPlus = expression.IndexOf('+');
-            int positionMinus = expression.IndexOf('-');
-            int positionMultiply = expression.IndexOf('*');
-            int positionDivide = expression.IndexOf('/');
+            //int positionPlus = expression.IndexOf('+');
+            //int positionMinus = expression.IndexOf('-');
+            //int positionMultiply = expression.IndexOf('*');
+            //int positionDivide = expression.IndexOf('/');
+            int positionPlus = expression.LastIndexOf('+');
+            int positionMinus = expression.LastIndexOf('-');
+            int positionMultiply = expression.LastIndexOf('*');
+            int positionDivide = expression.LastIndexOf('/');
+
+            Console.WriteLine("Позиции операций в выражении:");
 
             Console.WriteLine(positionPlus);
             Console.WriteLine(positionMinus);
             Console.WriteLine(positionMultiply);
             Console.WriteLine(positionDivide);
+
+            Console.WriteLine("-----");
 
             //Console.WriteLine(positionPlus + ' ' + positionMinus + ' ' + positionMultiply + ' ' + positionDivide);
 
@@ -89,13 +168,23 @@ namespace HomeWork9
 
             string oper1 = expression.Remove(position);
             string oper2 = expression.Remove(0, position + 1);
+
+            Console.WriteLine("Операнды, на которые разбито выражение:");
+
             Console.WriteLine(oper1);
             Console.WriteLine(oper2);
+
+            Console.WriteLine("-----");
+
+            Console.WriteLine("Результаты преобразования операндов в число типа double:");
 
             Double.TryParse(oper1, out double operand1);
             Console.WriteLine(operand1);
             Double.TryParse(oper2, out double operand2);
             Console.WriteLine(operand2);
+
+            Console.WriteLine("-----");
+            Console.WriteLine("");
 
             if (operand1 == 0)
             {
@@ -136,10 +225,52 @@ namespace HomeWork9
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите выражение: ");
-            //string inputString = Console.ReadLine();
-            string inputString = "7,1+3*5/10-7*2/4+5";
-            Console.WriteLine(ParseExpression(inputString));
+            Console.Write("Введите пример : ");
+            //string example = Console.ReadLine();
+            //string example = "7,55*10+3*5/10-7*2/4+5-1,5*5/2+1,25-0,1*5-6,5"; // правильный результат: 69
+            //string example = "50*2-75+15/3"; // правильный результат: 30
+            string example = "50,5*2-0,5+15/3+1,5"; // правильный результат: 107
+            Console.Write("Ответ : ");
+            Console.Write(MathParser.Example(example.ToCharArray()));
+            //Console.Write(MathParser.Example(example.ToCharArray()).ToString());
+
+            ///
+            //string str = "50,5";
+            //double chislo = Double.Parse(str);
+            //Console.WriteLine(chislo);
+            //double a = 50.5;
+            //Console.WriteLine(a.ToString());
+            ///
+            
+            //QuadraticAlgorithmExecutionTime q = new QuadraticAlgorithmExecutionTime();
+            //q.LeadTime(2, 2);
+
+            Console.Read();
+
+            /*
+            Console.WriteLine("----->Программа для парсинга арифметических выражений.<-----");
+            Console.WriteLine("Выражение может содержать числа с плавающей точкой, а также операции +, -, *, /");
+            Console.WriteLine("");
+            Console.WriteLine("Введите выражение:");
+            string inputString = Console.ReadLine();
+            Console.WriteLine("");
+            //string inputString = "-0,5--10,5"; // правильный результат: -13
+            //string inputString = "-0,5-10,5-1,0*3+1"; // правильный результат: -13
+            //string inputString = "7,55*10+3*5/10-7*2/4+5-1,5*5/2+1,25-0,1*5-6,5"; // правильный результат: 69
+            //Console.WriteLine(inputString.Length);
+            //Console.WriteLine(inputString[44]);
+
+            try
+            {
+                Console.WriteLine("Результат вычисления выражения: " + ParseExpression(inputString));
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("В выражении обнаружена ошибка, вычисление невозможно!");
+            }
+
+            Console.Read();
+            */
 
             /*
             //double result = 
@@ -240,6 +371,9 @@ namespace HomeWork9
             Console.WriteLine(expression);
             Console.Read();
             */
+
+
+
 
             /*
             // Пример алгоритма сложности O(n^2)
