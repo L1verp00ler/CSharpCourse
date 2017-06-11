@@ -23,7 +23,7 @@ namespace Lesson6_TestTasks
             }
 
             // можно также переписать через тернарный оператор
-            Console.Write("Перевернутая строка: ");
+            Console.Write("Строка с перевернутыми словами: ");
             // Если в строке у нас только буквы и цифры, то переворачиваем ее целиком (без доп преобр-ий)
             if (stringFromUser.All(Char.IsLetterOrDigit))
             {
@@ -63,7 +63,7 @@ namespace Lesson6_TestTasks
             {
                 // Не обрабатывает ситуацию, когда строка без знаков препинания!
                 // Также можно проверять на палиндром (хотя вроде бы мало смысла, т.к. при этой проверке все равно исп-ся reverse)
-                if (Char.IsLetter(inputString[i]))
+                if (Char.IsLetterOrDigit(inputString[i]))
                 {
                     tempStr += inputString[i];
                 }
