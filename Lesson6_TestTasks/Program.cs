@@ -53,7 +53,12 @@ namespace Lesson6_TestTasks
 
             for (int i = 0; i < inputString.Length; i++)
             {
-                if (Char.IsLetterOrDigit(inputString[i]))
+                if (Char.IsLetterOrDigit(inputString[i]) && i == inputString.Length - 1)
+                {
+                    tempStr += inputString[i];
+                    resultStr += StringReverse(tempStr);
+                }
+                else if (Char.IsLetterOrDigit(inputString[i]))
                 {
                     tempStr += inputString[i];
                 }
