@@ -14,6 +14,9 @@ namespace Lesson6_TestTasks
 
             string stringFromUser = Console.ReadLine();
 
+            // Заглушка:
+            //string stringFromUser = "car_temp_123+";
+
             Console.WriteLine();
             if (stringFromUser.Length == 0)
             {
@@ -59,7 +62,7 @@ namespace Lesson6_TestTasks
             string tempStr = "";
             string resultStr = "";
 
-            for (int i = 0; i < inputString.Length - 1; i++)
+            for (int i = 0; i < inputString.Length; i++)
             {
                 // Не обрабатывает ситуацию, когда строка без знаков препинания!
                 // Также можно проверять на палиндром (хотя вроде бы мало смысла, т.к. при этой проверке все равно исп-ся reverse)
@@ -73,6 +76,7 @@ namespace Lesson6_TestTasks
                     {
                         resultStr += StringReverse(tempStr);
                     }
+                    tempStr = "";
                     resultStr += inputString[i];
                 }
             }
