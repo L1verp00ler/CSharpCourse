@@ -18,7 +18,7 @@ namespace Lesson7_TestTask3
 
             Console.Write("Введите второе большое число: ");
             string number2AsString = Console.ReadLine();
-
+            
             // Проверка на ввод пустой строки
             if (number1AsString == "" || number2AsString == "")
             {
@@ -27,7 +27,7 @@ namespace Lesson7_TestTask3
                 return;
             }
 
-            // Проверка на ввод недопустимых символов
+            // Проверка на ввод недопустимых символов (буквы, знаки препинания и прочая хрень)
             if (!number1AsString.All(Char.IsDigit) || !number2AsString.All(Char.IsDigit))
             {
                 Console.WriteLine("Вы допустили ошибку при вводе чисел!");
@@ -38,18 +38,18 @@ namespace Lesson7_TestTask3
             Console.WriteLine("Длина первой строки: " + number1AsString.Length);
             Console.WriteLine("Длина второй строки: " + number2AsString.Length);
 
-            //int minNumber = 0;
             int difference = 0;
 
             // Если строки разной длины, то дополняем строку меньшей длины нулями до длины второй строки
-            if (number1AsString != number2AsString)
+            if (number1AsString.Length != number2AsString.Length)
             {
-                difference = Math.Abs(number1AsString.Length - number2AsString.Length);
+                difference = Math.Abs(number1AsString.Length - number2AsString.Length); // вычисляем разницу в кол-ве символов между строками
                 Console.WriteLine("Разница между строками (число символов): " + difference);
 
-                string additionalStr = new String('0', difference);
+                string additionalStr = new String('0', difference); // формируем добавочную строку из нулей линой difference символов
                 Console.WriteLine("Добавочная строка (нули): " + additionalStr);
 
+                // соединяем добавочную строку с строкой меньшей длины, чтобы строки стали одинаковой длины
                 if (number1AsString.Length < number2AsString.Length)
                 {
                     number1AsString = additionalStr + number1AsString;
@@ -62,14 +62,30 @@ namespace Lesson7_TestTask3
                 Console.WriteLine(number1AsString + ", " + number2AsString);
             }
 
-            /// Пока что поддерживает сложение чисел в сумме, дающих не больше 9!!! (т.е. не реализован перенос по разрядам)
+            int sum = 0;
+            int digit = 0;
+            int box = 0; // По сути, вместо int можно использовать bool (хотяяя, стоит ли?)
+            
             // Теперь строки равны и мы можем выполнять преобразования (возможно, можно было и без этого)
             for (int i = number1AsString.Length - 1; i >= 0; i--)
             {
-                int sum = Int32.Parse(number1AsString[i].ToString()) + Int32.Parse(number2AsString[i].ToString());
-                Console.WriteLine(sum);
-                resultString += sum.ToString();
+                sum = Int32.Parse(number1AsString[i].ToString()) + Int32.Parse(number2AsString[i].ToString());
+                digit = sum % 10 + box;
+                int chislo = sum % 10;
+
+                Console.WriteLine("Остаток от деления суммы двух текущих цифр на 10: " + chislo);
+                Console.WriteLine("Сумма двух текущих цифр: " + sum);
+                Console.WriteLine("Сумма цифр с учетом переноса из младшего разряда (и без учета переноса в старший разряд): " + digit);
+
+                box = sum >= 10 ? 1 : 0;
+
+                Console.WriteLine("Перенос в старший разряд: " + box);
+                Console.WriteLine("-----");
+
+                resultString += digit.ToString();
             }
+
+            resultString = box > 0 ? resultString += box : resultString;
 
             resultString = StringReverse(resultString);
 
