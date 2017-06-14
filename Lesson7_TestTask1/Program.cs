@@ -43,22 +43,44 @@ namespace Lesson7_TestTask1
         // Произведение факториалов чисел от 1 до n
         static uint FactorialMultiply(uint number)
         {
+            if (number == 1)
+            {
+                return 1;
+            }
+
             uint result = 1;
+            uint lastElem = 1;
+            //uint tekElem;
+
             for (uint i = 1; i < number + 1; i++)
             {
-                result *= Factorial(i);
+                // tekElem = lastElem * i;
+                // result = result * tekElem;
+                // lastElem = tekElem;
+                
+                // Запись ниже - это сокращенная запись кода в комментах выше (так менее понятно, но зато сипользуем меньше переменных)
+                lastElem *= i; // На самом деле тут считается текущий элемент, он будет предыдущим уже на следующем шаге цикла!
+                result *= lastElem; // lastElem = lastElem * i, result = result * lastElem, ===> result = result * lastElem * i;
             }
+
             return result;
         }
 
         // Вычисление факториала числа
         static uint Factorial(uint number)
         {
+            if (number == 1)
+            {
+                return 1;
+            }
+
             uint result = 1;
+
             for (uint i = 1; i < number + 1; i++)
             {
                 result *= i;
             }
+
             return result;
         }
     }
