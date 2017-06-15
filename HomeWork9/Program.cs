@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace HomeWork9
 {
+    /*
     class MathParser
     {
         public static double Example(char[] exp)
@@ -76,6 +77,7 @@ namespace HomeWork9
             return double.Parse(str); // Выдаст исключение при попытке преобразовать строку, содержащую число с точкой, (Н.: 50.5) в тип числа с плавающей запятой!!!
         }
     }
+    */
 
     class Program
     {
@@ -225,6 +227,7 @@ namespace HomeWork9
 
         static void Main(string[] args)
         {
+            /*
             Console.Write("Введите пример : ");
             //string example = Console.ReadLine();
             //string example = "7,55*10+3*5/10-7*2/4+5-1,5*5/2+1,25-0,1*5-6,5"; // правильный результат: 69
@@ -246,17 +249,20 @@ namespace HomeWork9
             //q.LeadTime(2, 2);
 
             Console.Read();
+            */
 
-            /*
+            ///
             Console.WriteLine("----->Программа для парсинга арифметических выражений.<-----");
             Console.WriteLine("Выражение может содержать числа с плавающей точкой, а также операции +, -, *, /");
             Console.WriteLine("");
             Console.WriteLine("Введите выражение:");
             string inputString = Console.ReadLine();
-            Console.WriteLine("");
-            //string inputString = "-0,5--10,5"; // правильный результат: -13
+            //string inputString = "50,5*2-0,5+15/3+1,5"; // правильный результат: 107
+            //string inputString = "-0,5--10,5"; // правильный результат: 10, но такие выражения не поддерживаются, будет брошено исключение!
             //string inputString = "-0,5-10,5-1,0*3+1"; // правильный результат: -13
             //string inputString = "7,55*10+3*5/10-7*2/4+5-1,5*5/2+1,25-0,1*5-6,5"; // правильный результат: 69
+            Console.WriteLine("");
+            
             //Console.WriteLine(inputString.Length);
             //Console.WriteLine(inputString[44]);
 
@@ -270,7 +276,7 @@ namespace HomeWork9
             }
 
             Console.Read();
-            */
+            ///
 
             /*
             //double result = 
