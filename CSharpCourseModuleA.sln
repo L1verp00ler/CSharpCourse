@@ -21,9 +21,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeWork8", "HomeWork8\Home
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeWork9", "HomeWork9\HomeWork9.csproj", "{F3957B5F-B737-44DB-AE46-08CDF5546CC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{1AC185F8-01BF-45DA-8346-3CF0AC80CDCD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson6", "ConsoleApp1\Lesson6.csproj", "{1AC185F8-01BF-45DA-8346-3CF0AC80CDCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{AADDAD1E-4D64-4F6B-8593-8BE57980726D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson7_TestTask", "ConsoleApp2\Lesson7_TestTask.csproj", "{AADDAD1E-4D64-4F6B-8593-8BE57980726D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson7_TestTask2", "Lesson6_TestTasks\Lesson7_TestTask2.csproj", "{E0B36E96-42FC-4894-A7FF-679D3837EF59}"
 EndProject
