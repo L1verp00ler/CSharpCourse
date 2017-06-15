@@ -19,9 +19,6 @@ namespace HomeWork9
             Console.WriteLine("");
             Console.WriteLine("Введите выражение:");
             string inputString = Console.ReadLine();
-            //string inputString = "50,5*2-0,5+15/3+1,5"; // правильный результат: 107
-            //string inputString = "-0,5--10,5"; // правильный результат: 10, но такие выражения не поддерживаются, будет брошено исключение!
-            //string inputString = "-0,5-10,5-1,0*3+1"; // правильный результат: -13
             //string inputString = "7,55*10+3*5/10-7*2/4+5-1,5*5/2+1,25-0,1*5-6,5"; // правильный результат: 69
             Console.WriteLine("");
 
@@ -43,20 +40,13 @@ namespace HomeWork9
             double result = default(Double);
             int position;
 
+            // Вычисляем позиции арифметических операций (крайнюю позицию, т.е. наибольшую)
             int positionPlus = expression.LastIndexOf('+');
             int positionMinus = expression.LastIndexOf('-');
             int positionMultiply = expression.LastIndexOf('*');
             int positionDivide = expression.LastIndexOf('/');
 
-            Console.WriteLine("Позиции операций в выражении:");
-
-            Console.WriteLine(positionPlus);
-            Console.WriteLine(positionMinus);
-            Console.WriteLine(positionMultiply);
-            Console.WriteLine(positionDivide);
-
-            Console.WriteLine("-----");
-
+            // Определяем операцию и ее позицию в выражении, исходя из приоритетов (от + до /)
             if (positionPlus > 0)
             {
                 operation = Operation.Plus;
@@ -84,27 +74,15 @@ namespace HomeWork9
                 position = 0;
             }
 
-
+            // Разбиваем выражение на 2 операнда
             string oper1 = expression.Remove(position);
             string oper2 = expression.Remove(0, position + 1);
 
-            Console.WriteLine("Операнды, на которые разбито выражение:");
-
-            Console.WriteLine(oper1);
-            Console.WriteLine(oper2);
-
-            Console.WriteLine("-----");
-
-            Console.WriteLine("Результаты преобразования операндов в число типа double:");
-
+            // Пытаемся преобразовать каждый операнд к числу с плавающей точкой
             Double.TryParse(oper1, out double operand1);
-            Console.WriteLine(operand1);
             Double.TryParse(oper2, out double operand2);
-            Console.WriteLine(operand2);
-
-            Console.WriteLine("-----");
-            Console.WriteLine("");
-
+            
+            // Если преобразование в число не удалось, то пытаемся распарсить дальше (рекурсивно)
             if (operand1 == 0)
             {
                 operand1 = ParseExpression(oper1);
@@ -115,6 +93,7 @@ namespace HomeWork9
                 operand2 = ParseExpression(oper2);
             }
 
+            // Выполняем операцию над операндами
             result = Calculate(operand1, operand2, operation);
 
             return result;
@@ -148,27 +127,25 @@ namespace HomeWork9
 
         
 
-        /*
-            // Пример алгоритма сложности O(n^2)
-            // Сортировка массива алгоритмом пузырьковой сортировки
-            // Будет идти до определенного элемента (так как последнее число и 'n'[0,1,...,n] чисел до него уже можно не сравнивать)
-            static int[] BubbleSortOfArray(int[] numbersArray)
+        // Пример алгоритма сложности O(n^2)
+        // Сортировка массива алгоритмом пузырьковой сортировки
+        // Будет идти до определенного элемента (так как последнее число и 'n'[0,1,...,n] чисел до него уже можно не сравнивать)
+        static int[] BubbleSortOfArray(int[] numbersArray)
+        {
+            for (int i = 0; i < numbersArray.Length - 1; i++)
             {
-                for (int i = 0; i < numbersArray.Length - 1; i++)
+                for (int j = 0; j < numbersArray.Length - i - 1; j++)
                 {
-                    for (int j = 0; j < numbersArray.Length - i - 1; j++)
+                    if (numbersArray[j] > numbersArray[j + 1])
                     {
-                        if (numbersArray[j] > numbersArray[j + 1])
-                        {
-                            int tempElem = numbersArray[j + 1];
-                            numbersArray[j + 1] = numbersArray[j];
-                            numbersArray[j] = tempElem;
-                        }
+                        int tempElem = numbersArray[j + 1];
+                        numbersArray[j + 1] = numbersArray[j];
+                        numbersArray[j] = tempElem;
                     }
                 }
-
-                return numbersArray;
             }
-        */
+
+            return numbersArray;
+        }
     }
 }
