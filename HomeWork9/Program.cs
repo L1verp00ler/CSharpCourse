@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HomeWork9
 {
@@ -16,30 +12,29 @@ namespace HomeWork9
             Divide
         }
 
-        static double Calculate(double oper1, double oper2, Operation op)
+        static void Main(string[] args)
         {
-            double result;
+            Console.WriteLine("----->Программа для парсинга арифметических выражений.<-----");
+            Console.WriteLine("Выражение может содержать числа с плавающей точкой, а также операции +, -, *, /");
+            Console.WriteLine("");
+            Console.WriteLine("Введите выражение:");
+            string inputString = Console.ReadLine();
+            //string inputString = "50,5*2-0,5+15/3+1,5"; // правильный результат: 107
+            //string inputString = "-0,5--10,5"; // правильный результат: 10, но такие выражения не поддерживаются, будет брошено исключение!
+            //string inputString = "-0,5-10,5-1,0*3+1"; // правильный результат: -13
+            //string inputString = "7,55*10+3*5/10-7*2/4+5-1,5*5/2+1,25-0,1*5-6,5"; // правильный результат: 69
+            Console.WriteLine("");
 
-            switch (op)
+            try
             {
-                case Operation.Plus:
-                    result = oper1 + oper2;
-                    break;
-                case Operation.Minus:
-                    result = oper1 - oper2;
-                    break;
-                case Operation.Multiply:
-                    result = oper1 * oper2;
-                    break;
-                case Operation.Divide:
-                    result = oper1 / oper2;
-                    break;
-                default:
-                    result = 0.0; // на самом деле тут правильнее кидать исключение!!!
-                    break;
+                Console.WriteLine("Результат вычисления выражения: " + ParseExpression(inputString));
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("В выражении обнаружена ошибка, вычисление невозможно!");
             }
 
-            return result;
+            Console.Read();
         }
 
         static double ParseExpression(string expression)
@@ -47,10 +42,7 @@ namespace HomeWork9
             Operation operation;
             double result = default(Double);
             int position;
-            //int positionPlus = expression.IndexOf('+');
-            //int positionMinus = expression.IndexOf('-');
-            //int positionMultiply = expression.IndexOf('*');
-            //int positionDivide = expression.IndexOf('/');
+
             int positionPlus = expression.LastIndexOf('+');
             int positionMinus = expression.LastIndexOf('-');
             int positionMultiply = expression.LastIndexOf('*');
@@ -64,8 +56,6 @@ namespace HomeWork9
             Console.WriteLine(positionDivide);
 
             Console.WriteLine("-----");
-
-            //Console.WriteLine(positionPlus + ' ' + positionMinus + ' ' + positionMultiply + ' ' + positionDivide);
 
             if (positionPlus > 0)
             {
@@ -124,167 +114,41 @@ namespace HomeWork9
             {
                 operand2 = ParseExpression(oper2);
             }
-            
+
             result = Calculate(operand1, operand2, operation);
-            /*
-            if (operand1 != 0 && operand2 != 0)
-            {
-                result = Calculate(operand1, operand2, operation);
-            }
-            */
 
             return result;
-            
-            //double chislo = Double.Parse(oper1);
-            //Console.WriteLine(chislo);
-
-            //Decimal.TryParse(inputString, out Decimal result)); // рабочая штуковина!!!
-
-            //if ()
-
-            /*
-            if (positionPlus != 0 && positionMinus != 0)
-            {
-                Operation operation = positionPlus < positionMinus ? Operation.Plus : Operation.Minus;
-                int position = positionPlus < positionMinus ? positionPlus : positionMinus;
-            }
-            //Console.WriteLine(inputString);
-            */
         }
 
-        static void Main(string[] args)
+        static double Calculate(double oper1, double oper2, Operation op)
         {
-            ///
-            Console.WriteLine("----->Программа для парсинга арифметических выражений.<-----");
-            Console.WriteLine("Выражение может содержать числа с плавающей точкой, а также операции +, -, *, /");
-            Console.WriteLine("");
-            Console.WriteLine("Введите выражение:");
-            string inputString = Console.ReadLine();
-            //string inputString = "50,5*2-0,5+15/3+1,5"; // правильный результат: 107
-            //string inputString = "-0,5--10,5"; // правильный результат: 10, но такие выражения не поддерживаются, будет брошено исключение!
-            //string inputString = "-0,5-10,5-1,0*3+1"; // правильный результат: -13
-            //string inputString = "7,55*10+3*5/10-7*2/4+5-1,5*5/2+1,25-0,1*5-6,5"; // правильный результат: 69
-            Console.WriteLine("");
-            
-            //Console.WriteLine(inputString.Length);
-            //Console.WriteLine(inputString[44]);
+            double result;
 
-            try
+            switch (op)
             {
-                Console.WriteLine("Результат вычисления выражения: " + ParseExpression(inputString));
-            }
-            catch (Exception exc)
-            {
-                Console.WriteLine("В выражении обнаружена ошибка, вычисление невозможно!");
+                case Operation.Plus:
+                    result = oper1 + oper2;
+                    break;
+                case Operation.Minus:
+                    result = oper1 - oper2;
+                    break;
+                case Operation.Multiply:
+                    result = oper1 * oper2;
+                    break;
+                case Operation.Divide:
+                    result = oper1 / oper2;
+                    break;
+                default:
+                    result = 0.0; // на самом деле тут правильнее кидать исключение!!!
+                    break;
             }
 
-            Console.Read();
-            ///
+            return result;
+        }
 
-            /*
-            //double result = 
-            char[] operations = new char[] { '*', '/', '+', '-' };
-            int positionPlus = inputString.IndexOf('+');
-            int positionMinus = inputString.IndexOf('-');
-            if (positionPlus != 0 && positionMinus != 0)
-            {
-                Operation operation = positionPlus < positionMinus ? Operation.Plus : Operation.Minus;
-                int position = positionPlus < positionMinus ? positionPlus : positionMinus;
-            }
-            Console.WriteLine(inputString);
-            */
+        
 
-
-
-            /*
-            string inputString = Console.ReadLine();
-            //string inputString = "HelloWorld";
-            char symbol = 'W';
-            //decimal number = Decimal.TryParse(Console.ReadLine());
-            Console.WriteLine(Decimal.TryParse(inputString, out Decimal result)); // рабочая штуковина!!!
-            int positionNumber = inputString.IndexOf(symbol);
-            Console.WriteLine(inputString.All(Char.IsNumber));
-            Console.WriteLine(positionNumber);
-            Console.Read();
-            */
-
-            /*
-            Console.WriteLine("Нажмите клавишу 'Esc'!");
-
-            int codeKey = Console.Read();
-            char myChar = (char)codeKey;
-
-            Console.WriteLine(codeKey);
-            Console.WriteLine(myChar);
-            Console.WriteLine(" ");
-
-            Console.Read();
-
-            Console.ReadLine();
-            */
-
-            /*
-            if (Console.ReadKey().Key == ConsoleKey.Escape)
-            {
-                Console.WriteLine("Вы нажали клавишу 'Esc'");
-            }
-            else
-            {
-                Console.WriteLine("Вы нажали какую-то другую клавишу!");
-            }
-
-            Console.Read();
-            */
-
-            /*
-            Console.WriteLine(OptionalParam(x: 2, y: 3));
-
-            //Необязательный параметр z использует значение по умолчанию
-            Console.WriteLine(OptionalParam(y: 2, x: 3, s: 10));
-
-            Console.ReadLine();
-            */
-
-            /*
-            Console.WriteLine("Введите выражение:");
-            int number = Int32.Parse(Console.ReadLine()); // бросает исключение, если строка содержит что-то кроме цифр!
-            Console.ReadLine();
-            */
-
-            /*
-            List<double> numbersList = new List<double>();
-            List<char> operaionsList = new List<char>();
-            string numberAsString = "";
-
-            Console.WriteLine("Введите выражение:");
-            string expression = Console.ReadLine();
-
-            for (int i = 0; i < expression.Length; i++)
-            {
-                while (expression[i] == '/' || expression[i] == '*' || expression[i] == '+' || expression[i] == '-')
-                {
-                    numberAsString += expression[i];
-                }
-
-                //numbersList.Add((double)numberAsString);
-
-                if (expression[i] == '/' || expression[i] == '*' || expression[i] == '+' || expression[i] == '-')
-                {
-                    operaionsList.Add(expression[i]);
-                }
-            }
-
-            Console.WriteLine(expression[0]);
-            Console.WriteLine(expression[1]);
-
-            Console.WriteLine(expression);
-            Console.Read();
-            */
-
-
-
-
-            /*
+        /*
             // Пример алгоритма сложности O(n^2)
             // Сортировка массива алгоритмом пузырьковой сортировки
             // Будет идти до определенного элемента (так как последнее число и 'n'[0,1,...,n] чисел до него уже можно не сравнивать)
@@ -305,7 +169,6 @@ namespace HomeWork9
 
                 return numbersArray;
             }
-            */
-        }
+        */
     }
 }
