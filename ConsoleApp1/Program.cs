@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1
@@ -46,10 +47,10 @@ namespace ConsoleApp1
         {
             while (true)
             {
-                Engine2D.Clear();
+                //Engine2D.Clear();
                 foreach (var shape in shapes)
                 {
-                    shape.Draw();
+                    //shape.Draw();
                 }
 
                 Thread.Sleep(100);
@@ -59,7 +60,7 @@ namespace ConsoleApp1
 
         public static int Ticks { get; private set; }
 
-        public 
+        //public 
 
         public static void SetPixel(int x, int y, ConsoleColor color = ConsoleColor.White)
         {
