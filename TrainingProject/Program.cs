@@ -8,33 +8,30 @@ namespace TrainingProject
 {
     class Program
     {
-        delegate void GetMessage(); // Объявляем делегат
+        delegate int Operation(int x, int y); // Объявляем делегат
 
         static void Main(string[] args)
         {
-            GetMessage del; // Создаем переменную делегата
+            // Присваивание адреса метода через конструктор
+            Operation del = new Operation(Add);
+            int result = del.Invoke(4, 5);
+            Console.WriteLine(result);
 
-            if (DateTime.Now.Hour < 12)
-            {
-                del = GoodMorning; // Присваиваем переменной адрес метода
-            }
-            else
-            {
-                del = GoodEvening;
-            }
+            del = Multiply; // Теперь делегат указывает на метод Multiply
+            result = del.Invoke(4, 5);
+            Console.WriteLine(result);
 
-            del.Invoke();
             Console.ReadLine();
         }
 
-        private static void GoodMorning()
+        private static int Add(int x, int y)
         {
-            Console.WriteLine("Good Morning!");
+            return x + y;
         }
 
-        private static void GoodEvening()
+        private static int Multiply(int x, int y)
         {
-            Console.WriteLine("Good Evening!");
+            return x * y;
         }
 
     }
