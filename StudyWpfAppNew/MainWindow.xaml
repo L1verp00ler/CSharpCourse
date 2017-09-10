@@ -6,19 +6,15 @@
         xmlns:local="clr-namespace:StudyWpfAppNew"
         mc:Ignorable="d"
         Title="Grid" Height="350" Width="525">
-    <Grid ShowGridLines="True">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="0.5*"></ColumnDefinition>
-            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="0" Grid.Row="0" Content="Строка 0 Столбец 0" />
-        <Button Grid.Column="0" Grid.Row="1" Content="Объединение трех столбцов" Grid.ColumnSpan="3" />
-        <Button Grid.Column="2" Grid.Row="2" Content="Строка 2 Столбец 2" />
+        <Button Grid.Column="0" Content="Левая кнопка" />
+        <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3"
+                      HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+        <Button Grid.Column="2" Content="Правая кнопка" />
     </Grid>
 </Window>
